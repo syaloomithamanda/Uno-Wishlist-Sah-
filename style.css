@@ -1,0 +1,221 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Bungee', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background: url('IMG/unobg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.4); /* Lapisan hitam transparan */
+  z-index: -1;
+}
+
+h1 {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 2.5rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px #000;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px 20px;
+}
+
+/* Struktur dasar kartu UNO */
+.uno-card {
+  width: 220px;
+  height: 330px;
+  border-radius: 25px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Flip effect */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.uno-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Sisi depan dan belakang */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* Tampilan depan kartu */
+.card-front {
+  transform: rotateY(0deg);
+}
+
+/* Tampilan belakang kartu */
+.card-back {
+  transform: rotateY(180deg);
+  background-color: #111;
+  color: #eee;
+}
+
+/* Kartu Agnes - berwarna ala UNO FLIP */
+.uno-colored .card-front {
+  background: radial-gradient(circle at center, #5ac8fa 20%, #ff2d55 80%);
+  color: rgb(0, 0, 0);
+}
+
+/* Kartu belum lulus - grayscale */
+.uno-grayscale .card-front {
+  background: linear-gradient(135deg, #555, #222);
+  color: #ccc;
+  filter: grayscale(100%);
+}
+
+.card-front .name {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-front .gelar {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.card-back p {
+  font-size: 1.1rem;
+  padding: 0 10px;
+}
+
+/* Tombol musik */
+.audio-control {
+  margin: 20px;
+}
+
+.audio-control button {
+  background: #ff2d55;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.audio-control button:hover {
+  background: #c0264d;
+}
+
+.agnes-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 3px solid white;
+  box-shadow: 0 0 10px #fff;
+}
+
+.flash {
+  animation: flashEffect 0.4s ease-in-out;
+}
+
+@keyframes flashEffect {
+  0% { filter: brightness(2); }
+  100% { filter: brightness(1); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.8rem;
+    margin-top: 30px;
+    padding: 0 10px;
+  }
+
+  .cards-container {
+    flex-direction: column;
+    gap: 25px;
+    margin: 30px 10px;
+  }
+
+  .uno-card {
+    width: 80vw;
+    height: calc(80vw * 1.5); /* 3:2 ratio */
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .card-front .name {
+    font-size: 1.2rem;
+  }
+
+  .card-front .gelar {
+    font-size: 0.9rem;
+  }
+
+  .card-back p {
+    font-size: 1rem;
+  }
+
+  .agnes-photo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .audio-control button {
+    width: 90%;
+    font-size: 1rem;
+  }
+}

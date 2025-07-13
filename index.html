@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UNO Wishlist Sah!</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<body>
+  <h1>Flip dulu dang tu kartu 👇</h1>
+
+  <div class="cards-container">
+    <!-- Kartu Agnes -->
+    <div class="uno-card uno-colored" id="agnes-card" onclick="flipCard(this)">
+    <div class="card-inner">
+        <div class="card-front">
+        <span class="name">Agnes Papeden</span>
+        </div>
+        <div class="card-back">
+        <img src="IMG/agnes.jpg" alt="Agnes Photo" class="agnes-photo">
+        <p>Agnes Papeden, S.Tr.Ak</p>
+        </div>
+    </div>
+    </div>
+
+    <!-- Kartu Aurora -->
+    <div class="uno-card uno-grayscale" data-name="Aurora" onclick="flipCard(this)">
+    <div class="card-inner">
+        <div class="card-front">
+        <span class="gelar">Anastasia Aurora</span>
+        </div>
+        <div class="card-back">
+        <p>Anastasia Aurora, S.Tr.Ak</p>
+        </div>
+    </div>
+    </div>
+
+    <!-- Kartu Amanda -->
+    <div class="uno-card uno-grayscale" data-name="Amanda" onclick="flipCard(this)">
+    <div class="card-inner">
+        <div class="card-front">
+        <span class="gelar">Syaloomitha Amanda</span>
+        </div>
+        <div class="card-back">
+        <p>Syaloomitha Amanda, S.Kom</p>
+        </div>
+    </div>
+    </div>
+
+  <!-- Audio -->
+  <audio id="agnes-audio" src="Song/wearethechampions.mp3"></audio>
+  <audio id="zonk-sound" src="Song/zonk.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
